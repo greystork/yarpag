@@ -192,14 +192,18 @@ namespace PassGen {
 			this.lblPasswordCharCount.Size = new System.Drawing.Size(109, 18);
 			this.lblPasswordCharCount.Tag = " {0,3:D} Characters";
 			this.lblPasswordCharCount.Text = "  8 Characters";
+			this.lblPasswordCharCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.lblPasswordCharCount.ToolTipText = "The number of password characters generated.";
 			// 
 			// lblStatus
 			// 
+			this.lblStatus.AutoToolTip = true;
 			this.lblStatus.Name = "lblStatus";
-			this.lblStatus.Size = new System.Drawing.Size(59, 18);
+			this.lblStatus.Size = new System.Drawing.Size(231, 18);
+			this.lblStatus.Spring = true;
 			this.lblStatus.Tag = "Clipboard: ";
 			this.lblStatus.Text = "Clipboard: ";
+			this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
 			// chkSpaces
 			// 

@@ -15,7 +15,11 @@ namespace PassGen {
 
 	public partial class PasswordGenerator : Form {
 
+
 		public const int DefaultPasswordLength = 8;
+
+
+		#region Private Variables
 
 		private int btnGenerateDeltaX;
 		private int btnCopyDeltaX;
@@ -33,9 +37,15 @@ namespace PassGen {
 		private string capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		private string numerals = "0123456789";
 		private string whitespace = " ";
-
 		private ResourceSet specialCharResources = SpecialCharacters.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
+		#endregion
+
+		#region Constructors
+
+		/// <summary>
+		/// Default Constructor
+		/// </summary>
 		public PasswordGenerator() {
 
 			moveCount = 1;
@@ -59,7 +69,7 @@ namespace PassGen {
 
 			int widthChars = (txtPassword.Width - txtPasswordHorizontalMargin) / charPixelWidth;
 			int maxStringWidth = widthChars * charPixelWidth;
-			
+
 			trkLengthMarginWidth = trkLength.Width - maxStringWidth - 3; // Don't know where the minus 3 come from...
 
 			foreach (DictionaryEntry entry in specialCharResources)
@@ -72,6 +82,19 @@ namespace PassGen {
 			DoResize();
 		}
 
+		#endregion
+
+		#region Private Methods
+
+		/// <summary>
+		/// Compute the character width of the current font for txtPassword.
+		/// </summary>
+		/// <remarks>
+		/// For this computation to remain meaningful, 
+		/// txtPassword must always be assigned a proportional font, 
+		/// such as Courier New.
+		/// </remarks>
+		/// <returns>The character width of the current font for txtPassword in pixels.</returns>
 		private int GetCharPixelWidth() {
 
 			string testString = "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789";
@@ -85,56 +108,61 @@ namespace PassGen {
 			return (int)charWidth;
 		}
 
-		private void DoResize() {
-
-			this.SuspendLayout();
-
-			int thisWidth = this.Width;
-			int txtPasswordWidth = thisWidth - txtPasswordDeltaWidth;
-			int widthChars = (txtPasswordWidth - txtPasswordHorizontalMargin) / charPixelWidth;
-
-			if (widthChars < passwordLength) {
-				txtPassword.Text = txtPassword.Text.Remove(widthChars);
-				trkLength.Value = widthChars;
-				passwordLength = widthChars;
-			}
-			txtPassword.Width = txtPasswordWidth;
-			txtPassword.MaxLength = widthChars;
-			trkLength.Width = trkLengthMarginWidth + (widthChars * charPixelWidth);
-			trkLength.Maximum = widthChars;
-
-			cboSpecific.Width = thisWidth - cboSpecificDeltaWidth;
-			cboSpecific.SelectionLength = 0;
-
-			btnGenerate.Location = new Point(thisWidth - btnGenerateDeltaX, btnGenerate.Location.Y);
-			btnCopy.Location = new Point(btnGenerate.Location.X, btnCopy.Location.Y);
-			btnGenerateCopy.Location = new Point(thisWidth - btnGenerateCopyDeltaX, btnGenerateCopy.Location.Y);
-
-			this.ResumeLayout(true);
-
-			trkLength.Focus();
-		}
-
+		/// <summary>
+		/// Generate a random password.
+		/// </summary>
+		/// <param name="length">Length of password to generate.</param>
+		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length) {
 
 			return GetRandomPassword(length, false, false, false, String.Empty);
 		}
 
+		/// <summary>
+		/// Generate a random password.
+		/// </summary>
+		/// <param name="length">Length of password to generate.</param>
+		/// <param name="uppercase">Allow uppercase characters in password.</param>
+		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length, bool uppercase) {
 
 			return GetRandomPassword(length, uppercase, false, false, String.Empty);
 		}
 
+		/// <summary>
+		/// Generate a random password.
+		/// </summary>
+		/// <param name="length">Length of password to generate.</param>
+		/// <param name="uppercase">Allow uppercase characters in password.</param>
+		/// <param name="numbers"Allow numerals in password.></param>
+		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length, bool uppercase, bool numbers) {
 
 			return GetRandomPassword(length, uppercase, numbers, false, String.Empty);
 		}
 
+		/// <summary>
+		/// Generate a random password.
+		/// </summary>
+		/// <param name="length">Length of password to generate.</param>
+		/// <param name="uppercase">Allow uppercase characters in password.</param>
+		/// <param name="numbers"Allow numerals in password.></param>
+		/// <param name="spaces">Allow spaces in password.</param>
+		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool spaces) {
 
 			return GetRandomPassword(length, uppercase, numbers, spaces, String.Empty);
 		}
 
+		/// <summary>
+		/// Generate a random password.
+		/// </summary>
+		/// <param name="length">Length of password to generate.</param>
+		/// <param name="uppercase">Allow uppercase characters in password.</param>
+		/// <param name="numbers"Allow numerals in password.></param>
+		/// <param name="spaces">Allow spaces in password.</param>
+		/// <param name="specials">String containing special characterrs to allow in password.</param>
+		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool spaces, string specials) {
 
 			string password = String.Empty;
@@ -172,6 +200,9 @@ namespace PassGen {
 			return password;
 		}
 
+		/// <summary>
+		/// Generate a new password and display it in txtPassword.
+		/// </summary>
 		private void Generate() {
 
 			string specialCharString = GetSpecialCharString();
@@ -179,6 +210,82 @@ namespace PassGen {
 			txtPassword.Text = GetRandomPassword(passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkSpaces.Checked, specialCharString);
 		}
 
+		/// <summary>
+		/// Copy text from txtPassword to clipboard.
+		/// </summary>
+		private void Copy() {
+
+			Clipboard.SetText(txtPassword.Text);
+			UpdateStatusText();
+		}
+
+		/// <summary>
+		/// Ressize and arrange embedded controls to fit parent form.
+		/// </summary>
+		private void DoResize() {
+
+			this.SuspendLayout();
+
+			int thisWidth = this.Width;
+			int txtPasswordWidth = thisWidth - txtPasswordDeltaWidth;
+			int widthChars = (txtPasswordWidth - txtPasswordHorizontalMargin) / charPixelWidth;
+
+			if (widthChars < passwordLength) {
+				trkLength.Value = widthChars;
+				AdjustPasswordLength();
+			}
+			txtPassword.Width = txtPasswordWidth;
+			txtPassword.MaxLength = widthChars;
+			trkLength.Width = trkLengthMarginWidth + (widthChars * charPixelWidth);
+			trkLength.Maximum = widthChars;
+
+			cboSpecific.Width = thisWidth - cboSpecificDeltaWidth;
+			cboSpecific.SelectionLength = 0;
+
+			btnGenerate.Location = new Point(thisWidth - btnGenerateDeltaX, btnGenerate.Location.Y);
+			btnCopy.Location = new Point(btnGenerate.Location.X, btnCopy.Location.Y);
+			btnGenerateCopy.Location = new Point(thisWidth - btnGenerateCopyDeltaX, btnGenerateCopy.Location.Y);
+
+			this.ResumeLayout(true);
+
+			trkLength.Focus();
+		}
+
+		/// <summary>
+		/// Adjust password length based on the position of trkLength.
+		/// </summary>
+		private void AdjustPasswordLength() {
+
+			if (passwordLength > trkLength.Value)
+				txtPassword.Text = txtPassword.Text.Remove(trkLength.Value);
+			else if (passwordLength < trkLength.Value) {
+				string specialCharString = GetSpecialCharString();
+				string passwordChars = GetRandomPassword(trkLength.Value - passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkSpaces.Checked, specialCharString);
+
+				txtPassword.Text += passwordChars;
+			}
+			passwordLength = trkLength.Value;
+			UpdateStatusText();
+		}
+
+		/// <summary>
+		/// Update label text fields in status bar.
+		/// </summary>
+		private void UpdateStatusText() {
+
+			string clipboardText = Clipboard.GetText();
+			string clipboardLine = clipboardText.Split(new char[] { '\r', '\n' })[0];
+
+			lblStatus.Text = lblStatus.Tag.ToString() + clipboardLine;
+			lblPasswordCharCount.Text = String.Format(lblPasswordCharCount.Tag.ToString(), passwordLength);
+			trkLength.Focus();
+		}
+
+		/// <summary>
+		/// Get string containing special characters selected in cboSpecific,
+		/// as defined in the SpecialCharacters resource file.
+		/// </summary>
+		/// <returns></returns>
 		private string GetSpecialCharString() {
 
 			string specialCharString = String.Empty;
@@ -194,27 +301,14 @@ namespace PassGen {
 			}
 			return specialCharString;
 		}
+		
+		#endregion
 
-		private void Copy() {
-
-			Clipboard.SetText(txtPassword.Text);
-			UpdateStatusText();
-		}
-
-		private void UpdateStatusText() {
-
-			string clipboardText = Clipboard.GetText();
-			string clipboardLine = clipboardText.Split(new char[] { '\r', '\n' })[0];
-
-			lblStatus.Text = lblStatus.Tag.ToString() + clipboardLine;
-			lblStatus.ToolTipText = clipboardText;
-			lblPasswordCharCount.Text = String.Format(lblPasswordCharCount.Tag.ToString(), passwordLength);
-			trkLength.Focus();
-		}
-
+		#region Event Handlers
+		
 		private void PasswordGenerator_Activated(object sender, EventArgs e) {
 
-			UpdateStatusText();
+			UpdateStatusText(); // Refresh clipboard display.
 		}
 
 		private void PasswordGenerator_FormClosing(object sender, FormClosingEventArgs e) {
@@ -239,15 +333,15 @@ namespace PassGen {
 
 		private void chkSpecialChars_CheckedChanged(object sender, EventArgs e) {
 
-			Generate();
 			chkSpecific.Enabled = chkSpecialChars.Checked;
 			cboSpecific.Enabled = chkSpecialChars.Checked && chkSpecific.Checked;
+			Generate();
 		}
 
 		private void chkSpecific_CheckedChanged(object sender, EventArgs e) {
 
-			Generate();
 			cboSpecific.Enabled = chkSpecialChars.Checked && chkSpecific.Checked;
+			Generate();
 		}
 
 		private void cboSpecific_TextChanged(object sender, EventArgs e) {
@@ -260,16 +354,7 @@ namespace PassGen {
 
 		private void trkLength_Scroll(object sender, EventArgs e) {
 
-			if (passwordLength > trkLength.Value)
-				txtPassword.Text = txtPassword.Text.Remove(trkLength.Value);
-			else if (passwordLength < trkLength.Value) {
-				string specialCharString = GetSpecialCharString();
-				string passwordChars = GetRandomPassword(trkLength.Value - passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkSpaces.Checked, specialCharString);
-
-				txtPassword.Text += passwordChars;
-			}
-			passwordLength = trkLength.Value;
-			UpdateStatusText();
+			AdjustPasswordLength();
 		}
 
 		private void btnGenerate_Click(object sender, EventArgs e) {
@@ -293,6 +378,9 @@ namespace PassGen {
 			DoResize();
 		}
 
+		/// <summary>
+		/// The form MouseMove event is used to generate seed entropy.
+		/// </summary>
 		private void PasswordGenerator_MouseMove(object sender, MouseEventArgs e) {
 
 			if (--moveCount <= 0) {
@@ -319,5 +407,7 @@ namespace PassGen {
 				}
 			}
 		}
+
+		#endregion
 	}
 }
