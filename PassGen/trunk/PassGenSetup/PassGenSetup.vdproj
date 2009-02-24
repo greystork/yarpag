@@ -55,6 +55,17 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                }
+            }
         }
         "Release"
         {
@@ -71,6 +82,22 @@
         "PrivateKeyFile" = "8:"
         "TimeStampServer" = "8:"
         "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:Microsoft.Net.Framework.2.0"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 2.0"
+                    "ProductCode" = "8:Microsoft.Net.Framework.2.0"
+                    }
+                }
+            }
         }
     }
     "Deployable"
@@ -195,14 +222,14 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:PassGenSetup"
-        "ProductCode" = "8:{6ED52F61-6459-4B1A-A610-4BB3D92068CF}"
-        "PackageCode" = "8:{1B497330-D659-49C5-A231-B8594BDF57AB}"
+        "ProductCode" = "8:{E99162EF-0F3D-4780-BF46-A693B47A1C58}"
+        "PackageCode" = "8:{6D62D782-6AE9-4DD7-83DD-B34D7E7317CD}"
         "UpgradeCode" = "8:{FA580E81-B4E3-4A4C-9E5D-C1600AC975B1}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.0"
+        "ProductVersion" = "8:1.1.0"
         "Manufacturer" = "8:GreyStork.com"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -740,7 +767,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_E66B69378F4E4877A2611D5F1B3E09A7"
             {
-            "SourcePath" = "8:..\\obj\\Release\\PassGen.exe"
+            "SourcePath" = "8:..\\obj\\Debug\\PassGen.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_48706AA9C61E4D0EAB34FD00C840AAAB"

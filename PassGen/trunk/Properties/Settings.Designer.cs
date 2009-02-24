@@ -9,18 +9,408 @@
 //------------------------------------------------------------------------------
 
 namespace PassGen.Properties {
-
-
-	[global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-	[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "8.0.0.0")]
-	internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
-
-		private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
-
-		public static Settings Default {
-			get {
-				return defaultInstance;
-			}
-		}
-	}
+    
+    
+    [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "8.0.0.0")]
+    internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
+        
+        private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+        
+        public static Settings Default {
+            get {
+                return defaultInstance;
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>Universal</string>
+  <string>CZ</string>
+  <string>DE</string>
+  <string>HU</string>
+  <string>US</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection Keyboards {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["Keyboards"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>!?.,:;_-+=*/""'%()</string>
+  <string>˚;+ĚěŠšČčŘřŽžÝýÁáÍíÉé%=ˇ´'""/Úú()¨Ůů!§?,:._-*+</string>
+  <string>°^!""²§³$%&amp;/{([)]=}?ß\`´@€Üü*+~ÖöÄä'#&lt;&gt;|μ;,:._-</string>
+  <string>§'""+!%/=()ÖöÜüÓó\|€Őő÷Úú×[]Éé$ÁáŰűÍí&lt;&gt;#&amp;@{}?,;:._-*</string>
+  <string>`~!@#$%^&amp;*()-_=+[{]}\|;:'"",&lt;.&gt;/?</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection KeyboardSpecialCharacters {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["KeyboardSpecialCharacters"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("abcdefghijklmnopqrstuvwxyz")]
+        public string Letters {
+            get {
+                return ((string)(this["Letters"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("ABCDEFGHIJKLMNOPQRSTUVWXYZ")]
+        public string Capitals {
+            get {
+                return ((string)(this["Capitals"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0123456789")]
+        public string Numerals {
+            get {
+                return ((string)(this["Numerals"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("23456789")]
+        public string SafeNumerals {
+            get {
+                return ((string)(this["SafeNumerals"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("012345678901234567890123456789012345678901234567890123456789012345678901234567890" +
+            "1234567890123456789")]
+        public string LengthTestString {
+            get {
+                return ((string)(this["LengthTestString"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>thousand</string>
+  <string>million</string>
+  <string>billion</string>
+  <string>trillion</string>
+  <string>quadrillion</string>
+  <string>quintillion</string>
+  <string>sextillion</string>
+  <string>septillion</string>
+  <string>octillion</string>
+  <string>nonillion</string>
+  <string>decillion</string>
+  <string>undecillion</string>
+  <string>duodecillion</string>
+  <string>tredecillion</string>
+  <string>quattuordecillion</string>
+  <string>quindecillion</string>
+  <string>sexdecillion</string>
+  <string>septendecillion</string>
+  <string>octodecillion</string>
+  <string>novemdecillion</string>
+  <string>vigintillion</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection NumberNames {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["NumberNames"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("zero")]
+        public string ZeroName {
+            get {
+                return ((string)(this["ZeroName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("an unfathomable number (more than I care to compute) of")]
+        public string InifinityName {
+            get {
+                return ((string)(this["InifinityName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(" (ten to the power of {0:D})")]
+        public string PowerFormat {
+            get {
+                return ((string)(this["PowerFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0,3:F} ")]
+        public string NumberFormat {
+            get {
+                return ((string)(this["NumberFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("###,###")]
+        public string SmallNumberFormat {
+            get {
+                return ((string)(this["SmallNumberFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Numbers ")]
+        public string chkNumbersStart {
+            get {
+                return ((string)(this["chkNumbersStart"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0-9")]
+        public string NumeralsName {
+            get {
+                return ((string)(this["NumeralsName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("2-9")]
+        public string SafeNumeralsName {
+            get {
+                return ((string)(this["SafeNumeralsName"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("This password is one of {0} possible combinations.")]
+        public string txtPasswordTooltipFormat {
+            get {
+                return ((string)(this["txtPasswordTooltipFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("{0,3:D} Characters")]
+        public string lblPasswordCharCountFormat {
+            get {
+                return ((string)(this["lblPasswordCharCountFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Clipboard: ")]
+        public string lblStatusStart {
+            get {
+                return ((string)(this["lblStatusStart"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("The number of password characters generated.")]
+        public string lblPasswordCharCountTooltip {
+            get {
+                return ((string)(this["lblPasswordCharCountTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Specific: ")]
+        public string chkSpecificText {
+            get {
+                return ((string)(this["chkSpecificText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Specify a specific set of special characters to allow.")]
+        public string chkSpecificTooltip {
+            get {
+                return ((string)(this["chkSpecificTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Special Characters")]
+        public string chkSpecialCharsText {
+            get {
+                return ((string)(this["chkSpecialCharsText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allow passwords to contain other special characters.\r\nDefault is a universal set " +
+            "found in most keyboard layouts.")]
+        public string chkSpecialCharsTooltip {
+            get {
+                return ((string)(this["chkSpecialCharsTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Spaces")]
+        public string chkSpacesText {
+            get {
+                return ((string)(this["chkSpacesText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allow passwords to contain spaces.")]
+        public string chkSpacesTooltip {
+            get {
+                return ((string)(this["chkSpacesTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Uppercase")]
+        public string chkUppercaseText {
+            get {
+                return ((string)(this["chkUppercaseText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allow passwords to contain uppercase characters.")]
+        public string chkUppercaseTooltip {
+            get {
+                return ((string)(this["chkUppercaseTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Allow passwords to contain numerals, including or excluding zero and one.")]
+        public string chkNumbersTooltip {
+            get {
+                return ((string)(this["chkNumbersTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Move slider to change password length.")]
+        public string trkLengthTooltip {
+            get {
+                return ((string)(this["trkLengthTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Generate")]
+        public string btnGenerateText {
+            get {
+                return ((string)(this["btnGenerateText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Generate a different password.")]
+        public string btnGenerateTooltip {
+            get {
+                return ((string)(this["btnGenerateTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Copy")]
+        public string btnCopyText {
+            get {
+                return ((string)(this["btnCopyText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Copy current password to clipboard.")]
+        public string btnCopyTooltip {
+            get {
+                return ((string)(this["btnCopyTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("+")]
+        public string btnGenerateCopyText {
+            get {
+                return ((string)(this["btnGenerateCopyText"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Generate a new password and copy it to clipboard.")]
+        public string btnGenerateCopyTooltip {
+            get {
+                return ((string)(this["btnGenerateCopyTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Random Password Generator")]
+        public string Title {
+            get {
+                return ((string)(this["Title"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Select the special character set to allow.")]
+        public string cboSpecificTooltip {
+            get {
+                return ((string)(this["cboSpecificTooltip"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\" \"")]
+        public string Whitespace {
+            get {
+                return ((string)(this["Whitespace"]));
+            }
+        }
+    }
 }

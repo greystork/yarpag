@@ -30,15 +30,11 @@ namespace PassGen {
 		private int txtPasswordHorizontalMargin;
 		private int charPixelWidth;
 		private int passwordLength;
+		private int numValidChars;
 		private int moveCount;
 		private double seed;
 
-		private string letters = "abcdefghijklmnopqrstuvwxyz";
-		private string capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-		private string numerals = "0123456789";
-		private string safe_numerals = "23456789";
-		private string whitespace = " ";
-		private ResourceSet specialCharResources = SpecialCharacters.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
+		private Properties.Settings settings;
 
 		#endregion
 
@@ -49,10 +45,39 @@ namespace PassGen {
 		/// </summary>
 		public PasswordGenerator() {
 
+			settings = Properties.Settings.Default;
+			passwordLength = 8;
+			numValidChars = 60;
 			moveCount = 1;
 			seed = DateTime.Now.Ticks;
 
 			InitializeComponent();
+
+			this.Text = settings.Title;
+			lblPasswordCharCount.ToolTipText = settings.lblPasswordCharCountTooltip;
+			chkUppercase.Text = settings.chkUppercaseText;
+			chkNumbers.Text = settings.chkNumbersStart;
+			chkSpaces.Text = settings.chkSpacesText;
+			chkSpecialChars.Text = settings.chkSpecialCharsText;
+			chkSpecific.Text = settings.chkSpecificText;
+			btnGenerate.Text = settings.btnGenerateText;
+			btnCopy.Text = settings.btnCopyText;
+			btnGenerateCopy.Text = settings.btnGenerateCopyText;
+			tipPasswordgenerator.SetToolTip(chkUppercase, settings.chkUppercaseTooltip);
+			tipPasswordgenerator.SetToolTip(chkNumbers, settings.chkNumbersTooltip);
+			tipPasswordgenerator.SetToolTip(chkSpaces, settings.chkSpacesTooltip);
+			tipPasswordgenerator.SetToolTip(chkSpecialChars, settings.chkSpecialCharsTooltip);
+			tipPasswordgenerator.SetToolTip(chkSpecific, settings.chkSpecificTooltip);
+			tipPasswordgenerator.SetToolTip(cboSpecific, settings.cboSpecificTooltip);
+			tipPasswordgenerator.SetToolTip(trkLength, settings.trkLengthTooltip);
+			tipPasswordgenerator.SetToolTip(btnGenerate, settings.btnGenerateTooltip);
+			tipPasswordgenerator.SetToolTip(btnCopy, settings.btnCopyTooltip);
+			tipPasswordgenerator.SetToolTip(btnGenerateCopy, settings.btnGenerateCopyTooltip);
+
+			for (int specIndex = 0; specIndex < settings.Keyboards.Count; ++specIndex)
+				cboSpecific.Items.Add(settings.Keyboards[specIndex]);
+
+			cboSpecific.SelectedItem = settings.Keyboards[0];
 
 			int thisWidth = this.Width;
 
@@ -72,11 +97,6 @@ namespace PassGen {
 			int maxStringWidth = widthChars * charPixelWidth;
 
 			trkLengthMarginWidth = trkLength.Width - maxStringWidth - 3; // Don't know where the minus 3 come from...
-
-			foreach (DictionaryEntry entry in specialCharResources)
-				cboSpecific.Items.Add(entry.Key.ToString());
-
-			cboSpecific.SelectedItem = "Universal";
 
 			seed = DateTime.Now.Ticks / seed;
 			Generate();
@@ -98,7 +118,7 @@ namespace PassGen {
 		/// <returns>The character width of the current font for txtPassword in pixels.</returns>
 		private int GetCharPixelWidth() {
 
-			string testString = "0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789";
+			string testString = settings.LengthTestString;
 			Graphics graphics = txtPassword.CreateGraphics();
 
 			SizeF stringSize = graphics.MeasureString(testString, txtPassword.Font);
@@ -185,22 +205,23 @@ namespace PassGen {
 			char character;
 			int index;
 
-			string validChars = letters;
+			string validChars = settings.Letters;
 
 			if (uppercase)
-				validChars += capitals;
+				validChars += settings.Capitals;
 
 			if (numbers) {
 				if (eight_digit)
-					validChars += safe_numerals;
+					validChars += settings.SafeNumerals;
 				else
-					validChars += numerals;
+					validChars += settings.Numerals;
 			}
 
 			if (spaces)
-				validChars += whitespace;
+				validChars += settings.Whitespace.Replace("\"", "");
 
 			validChars += specials;
+			numValidChars = validChars.Length;
 
 			seed -= Math.Truncate(seed); // Get value greater than -1 and less than 1.
 
@@ -216,6 +237,7 @@ namespace PassGen {
 				--length;
 			}
 			seed = randomizer.NextDouble();
+			UpdateStatusText();
 
 			return password;
 		}
@@ -280,9 +302,7 @@ namespace PassGen {
 				txtPassword.Text = txtPassword.Text.Remove(trkLength.Value);
 			else if (passwordLength < trkLength.Value) {
 				string specialCharString = GetSpecialCharString();
-				string passwordChars = GetRandomPassword(passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkNumbers.CheckState == CheckState.Indeterminate, chkSpaces.Checked, specialCharString);
-
-
+				string passwordChars = GetRandomPassword(trkLength.Value - passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkNumbers.CheckState == CheckState.Indeterminate, chkSpaces.Checked, specialCharString);
 				txtPassword.Text += passwordChars;
 			}
 			passwordLength = trkLength.Value;
@@ -297,9 +317,46 @@ namespace PassGen {
 			string clipboardText = Clipboard.GetText();
 			string clipboardLine = clipboardText.Split(new char[] { '\r', '\n' })[0];
 
-			lblStatus.Text = lblStatus.Tag.ToString() + clipboardLine;
-			lblPasswordCharCount.Text = String.Format(lblPasswordCharCount.Tag.ToString(), passwordLength);
+			tipPasswordgenerator.SetToolTip(txtPassword, String.Format(settings.txtPasswordTooltipFormat, DoubleToString(Math.Pow(numValidChars, passwordLength))));
+			lblStatus.Text = settings.lblStatusStart + clipboardText;
+			lblPasswordCharCount.Text = String.Format(settings.lblPasswordCharCountFormat, passwordLength);
 			trkLength.Focus();
+		}
+
+		/// <summary>
+		/// Convert a double precision floating point number to a descriptive string.
+		/// </summary>
+		/// <param name="number">Number to convert.</param>
+		/// <returns>String describing input number.</returns>
+		private string DoubleToString(double number) {
+
+			if (number == 0)
+				return settings.ZeroName;
+
+			if (double.IsInfinity(number))
+				return settings.InifinityName;
+
+			if (number < 1000000)
+				return number.ToString(settings.SmallNumberFormat);
+
+			number /= 1000000f;
+
+			int index = 1;
+			int power = 6;
+			string name = String.Empty;
+
+			while (number > 1000) {
+				number /= 1000f;
+				++index;
+				power += 3;
+				if (index >= settings.NumberNames.Count) {
+					name = settings.NumberNames[settings.NumberNames.Count - 1] + ' ' + name;
+					index -= settings.NumberNames.Count;
+				}
+			}
+			name = settings.NumberNames[index] + ' ' + name;
+
+			return String.Format(settings.NumberFormat, number) + name.Trim() + String.Format(settings.PowerFormat, power);
 		}
 
 		/// <summary>
@@ -313,11 +370,10 @@ namespace PassGen {
 
 			if (chkSpecialChars.Checked) {
 				if (chkSpecific.Enabled && chkSpecific.Checked && cboSpecific.SelectedIndex >= 0)
-					specialCharString = specialCharResources.GetString(cboSpecific.SelectedItem.ToString());
+					specialCharString = settings.KeyboardSpecialCharacters[cboSpecific.SelectedIndex];
 				else {
-					specialCharString = SpecialCharacters.Universal;
-					if (cboSpecific.Text == String.Empty)
-						cboSpecific.SelectedItem = "Universal";
+					specialCharString = settings.KeyboardSpecialCharacters[0];
+					cboSpecific.SelectedItem = settings.Keyboards[0];
 				}
 			}
 			return specialCharString;
@@ -344,12 +400,12 @@ namespace PassGen {
 
 		private void chkNumbers_CheckStateChanged(object sender, EventArgs e) {
 
-			chkNumbers.Text = chkNumbers.Tag.ToString();
+			chkNumbers.Text = settings.chkNumbersStart;
 
 			if (chkNumbers.CheckState == CheckState.Checked)
-				chkNumbers.Text += "0-9";
+				chkNumbers.Text += settings.NumeralsName;
 			else if (chkNumbers.CheckState == CheckState.Indeterminate)
-				chkNumbers.Text += "2-9";
+				chkNumbers.Text += settings.SafeNumeralsName;
 
 			Generate();
 		}
@@ -375,7 +431,7 @@ namespace PassGen {
 		private void cboSpecific_TextChanged(object sender, EventArgs e) {
 
 			if (cboSpecific.Text == String.Empty)
-				cboSpecific.SelectedItem = "Universal";
+				cboSpecific.SelectedItem = settings.Keyboards[0];
 
 			Generate();
 		}

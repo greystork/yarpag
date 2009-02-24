@@ -35,13 +35,13 @@ namespace PassGen {
 			this.btnGenerate = new System.Windows.Forms.Button();
 			this.btnCopy = new System.Windows.Forms.Button();
 			this.btnGenerateCopy = new System.Windows.Forms.Button();
-			this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+			this.staPasswordGenerator = new System.Windows.Forms.StatusStrip();
 			this.lblPasswordCharCount = new System.Windows.Forms.ToolStripStatusLabel();
 			this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
 			this.chkSpaces = new System.Windows.Forms.CheckBox();
 			this.tipPasswordgenerator = new System.Windows.Forms.ToolTip(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.trkLength)).BeginInit();
-			this.statusStrip1.SuspendLayout();
+			this.staPasswordGenerator.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// chkUppercase
@@ -97,8 +97,8 @@ namespace PassGen {
 			this.txtPassword.ReadOnly = true;
 			this.txtPassword.Size = new System.Drawing.Size(274, 22);
 			this.txtPassword.TabIndex = 2;
+			this.txtPassword.Tag = "This password is one of {0} possible combinations.";
 			this.txtPassword.Text = "password";
-			this.tipPasswordgenerator.SetToolTip(this.txtPassword, "The automatically generated password.");
 			// 
 			// trkLength
 			// 
@@ -176,24 +176,23 @@ namespace PassGen {
 			// 
 			// statusStrip1
 			// 
-			this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblPasswordCharCount,
-            this.lblStatus});
-			this.statusStrip1.Location = new System.Drawing.Point(0, 108);
-			this.statusStrip1.Name = "statusStrip1";
-			this.statusStrip1.ShowItemToolTips = true;
-			this.statusStrip1.Size = new System.Drawing.Size(386, 23);
-			this.statusStrip1.TabIndex = 8;
-			this.statusStrip1.Text = "staPasswordGenerator";
+			this.staPasswordGenerator.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+			this.staPasswordGenerator.Location = new System.Drawing.Point(0, 108);
+			this.staPasswordGenerator.Name = "statusStrip1";
+			this.staPasswordGenerator.ShowItemToolTips = true;
+			this.staPasswordGenerator.Size = new System.Drawing.Size(386, 23);
+			this.staPasswordGenerator.TabIndex = 8;
+			this.staPasswordGenerator.Items.Add(lblPasswordCharCount);
+			this.staPasswordGenerator.Items.Add(lblStatus);
 			// 
 			// lblPasswordCharCount
 			// 
 			this.lblPasswordCharCount.BorderSides = System.Windows.Forms.ToolStripStatusLabelBorderSides.Right;
 			this.lblPasswordCharCount.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lblPasswordCharCount.Name = "lblPasswordCharCount";
-			this.lblPasswordCharCount.Size = new System.Drawing.Size(109, 18);
-			this.lblPasswordCharCount.Tag = " {0,3:D} Characters";
-			this.lblPasswordCharCount.Text = "  8 Characters";
+			this.lblPasswordCharCount.Size = new System.Drawing.Size(102, 18);
+			this.lblPasswordCharCount.Tag = "";
+			this.lblPasswordCharCount.Text = "8 characters.";
 			this.lblPasswordCharCount.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			this.lblPasswordCharCount.ToolTipText = "The number of password characters generated.";
 			// 
@@ -201,9 +200,9 @@ namespace PassGen {
 			// 
 			this.lblStatus.AutoToolTip = true;
 			this.lblStatus.Name = "lblStatus";
-			this.lblStatus.Size = new System.Drawing.Size(262, 18);
+			this.lblStatus.Size = new System.Drawing.Size(238, 18);
 			this.lblStatus.Spring = true;
-			this.lblStatus.Tag = "Clipboard: ";
+			this.lblStatus.Tag = "";
 			this.lblStatus.Text = "Clipboard: ";
 			this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
 			// 
@@ -228,7 +227,7 @@ namespace PassGen {
 			this.ClientSize = new System.Drawing.Size(386, 131);
 			this.Controls.Add(this.chkNumbers);
 			this.Controls.Add(this.chkSpaces);
-			this.Controls.Add(this.statusStrip1);
+			this.Controls.Add(this.staPasswordGenerator);
 			this.Controls.Add(this.txtPassword);
 			this.Controls.Add(this.btnGenerateCopy);
 			this.Controls.Add(this.btnCopy);
@@ -248,8 +247,8 @@ namespace PassGen {
 			this.Resize += new System.EventHandler(this.PasswordGenerator_Resize);
 			this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PasswordGenerator_MouseMove);
 			((System.ComponentModel.ISupportInitialize)(this.trkLength)).EndInit();
-			this.statusStrip1.ResumeLayout(false);
-			this.statusStrip1.PerformLayout();
+			this.staPasswordGenerator.ResumeLayout(false);
+			this.staPasswordGenerator.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -267,7 +266,7 @@ namespace PassGen {
 		private System.Windows.Forms.Button btnGenerate;
 		private System.Windows.Forms.Button btnCopy;
 		private System.Windows.Forms.Button btnGenerateCopy;
-		private System.Windows.Forms.StatusStrip statusStrip1;
+		private System.Windows.Forms.StatusStrip staPasswordGenerator;
 		private System.Windows.Forms.ToolStripStatusLabel lblStatus;
 		private System.Windows.Forms.ToolStripStatusLabel lblPasswordCharCount;
 		private System.Windows.Forms.CheckBox chkSpaces;

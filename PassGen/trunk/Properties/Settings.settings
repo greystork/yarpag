@@ -1,7 +1,161 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="PassGen.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="Keyboards" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Universal&lt;/string&gt;
+  &lt;string&gt;CZ&lt;/string&gt;
+  &lt;string&gt;DE&lt;/string&gt;
+  &lt;string&gt;HU&lt;/string&gt;
+  &lt;string&gt;US&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="KeyboardSpecialCharacters" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;!?.,:;_-+=*/"'%()&lt;/string&gt;
+  &lt;string&gt;˚;+ĚěŠšČčŘřŽžÝýÁáÍíÉé%=ˇ´'"/Úú()¨Ůů!§?,:._-*+&lt;/string&gt;
+  &lt;string&gt;°^!"²§³$%&amp;amp;/{([)]=}?ß\`´@€Üü*+~ÖöÄä'#&amp;lt;&amp;gt;|μ;,:._-&lt;/string&gt;
+  &lt;string&gt;§'"+!%/=()ÖöÜüÓó\|€Őő÷Úú×[]Éé$ÁáŰűÍí&amp;lt;&amp;gt;#&amp;amp;@{}?,;:._-*&lt;/string&gt;
+  &lt;string&gt;`~!@#$%^&amp;amp;*()-_=+[{]}\|;:'",&amp;lt;.&amp;gt;/?&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="Letters" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">abcdefghijklmnopqrstuvwxyz</Value>
+    </Setting>
+    <Setting Name="Capitals" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">ABCDEFGHIJKLMNOPQRSTUVWXYZ</Value>
+    </Setting>
+    <Setting Name="Numerals" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0123456789</Value>
+    </Setting>
+    <Setting Name="SafeNumerals" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">23456789</Value>
+    </Setting>
+    <Setting Name="LengthTestString" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789</Value>
+    </Setting>
+    <Setting Name="NumberNames" Type="System.Collections.Specialized.StringCollection" Scope="Application">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;thousand&lt;/string&gt;
+  &lt;string&gt;million&lt;/string&gt;
+  &lt;string&gt;billion&lt;/string&gt;
+  &lt;string&gt;trillion&lt;/string&gt;
+  &lt;string&gt;quadrillion&lt;/string&gt;
+  &lt;string&gt;quintillion&lt;/string&gt;
+  &lt;string&gt;sextillion&lt;/string&gt;
+  &lt;string&gt;septillion&lt;/string&gt;
+  &lt;string&gt;octillion&lt;/string&gt;
+  &lt;string&gt;nonillion&lt;/string&gt;
+  &lt;string&gt;decillion&lt;/string&gt;
+  &lt;string&gt;undecillion&lt;/string&gt;
+  &lt;string&gt;duodecillion&lt;/string&gt;
+  &lt;string&gt;tredecillion&lt;/string&gt;
+  &lt;string&gt;quattuordecillion&lt;/string&gt;
+  &lt;string&gt;quindecillion&lt;/string&gt;
+  &lt;string&gt;sexdecillion&lt;/string&gt;
+  &lt;string&gt;septendecillion&lt;/string&gt;
+  &lt;string&gt;octodecillion&lt;/string&gt;
+  &lt;string&gt;novemdecillion&lt;/string&gt;
+  &lt;string&gt;vigintillion&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
+    <Setting Name="ZeroName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">zero</Value>
+    </Setting>
+    <Setting Name="InifinityName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">an unfathomable number (more than I care to compute) of</Value>
+    </Setting>
+    <Setting Name="PowerFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)"> (ten to the power of {0:D})</Value>
+    </Setting>
+    <Setting Name="NumberFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0,3:F} </Value>
+    </Setting>
+    <Setting Name="SmallNumberFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">###,###</Value>
+    </Setting>
+    <Setting Name="chkNumbersStart" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Numbers </Value>
+    </Setting>
+    <Setting Name="NumeralsName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">0-9</Value>
+    </Setting>
+    <Setting Name="SafeNumeralsName" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">2-9</Value>
+    </Setting>
+    <Setting Name="txtPasswordTooltipFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">This password is one of {0} possible combinations.</Value>
+    </Setting>
+    <Setting Name="lblPasswordCharCountFormat" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">{0,3:D} Characters</Value>
+    </Setting>
+    <Setting Name="lblStatusStart" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Clipboard: </Value>
+    </Setting>
+    <Setting Name="lblPasswordCharCountTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">The number of password characters generated.</Value>
+    </Setting>
+    <Setting Name="chkSpecificText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Specific: </Value>
+    </Setting>
+    <Setting Name="chkSpecificTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Specify a specific set of special characters to allow.</Value>
+    </Setting>
+    <Setting Name="chkSpecialCharsText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Special Characters</Value>
+    </Setting>
+    <Setting Name="chkSpecialCharsTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Allow passwords to contain other special characters.
+Default is a universal set found in most keyboard layouts.</Value>
+    </Setting>
+    <Setting Name="chkSpacesText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Spaces</Value>
+    </Setting>
+    <Setting Name="chkSpacesTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Allow passwords to contain spaces.</Value>
+    </Setting>
+    <Setting Name="chkUppercaseText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Uppercase</Value>
+    </Setting>
+    <Setting Name="chkUppercaseTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Allow passwords to contain uppercase characters.</Value>
+    </Setting>
+    <Setting Name="chkNumbersTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Allow passwords to contain numerals, including or excluding zero and one.</Value>
+    </Setting>
+    <Setting Name="trkLengthTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Move slider to change password length.</Value>
+    </Setting>
+    <Setting Name="btnGenerateText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Generate</Value>
+    </Setting>
+    <Setting Name="btnGenerateTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Generate a different password.</Value>
+    </Setting>
+    <Setting Name="btnCopyText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Copy</Value>
+    </Setting>
+    <Setting Name="btnCopyTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Copy current password to clipboard.</Value>
+    </Setting>
+    <Setting Name="btnGenerateCopyText" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">+</Value>
+    </Setting>
+    <Setting Name="btnGenerateCopyTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Generate a new password and copy it to clipboard.</Value>
+    </Setting>
+    <Setting Name="Title" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Random Password Generator</Value>
+    </Setting>
+    <Setting Name="cboSpecificTooltip" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Select the special character set to allow.</Value>
+    </Setting>
+    <Setting Name="Whitespace" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">" "</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>
