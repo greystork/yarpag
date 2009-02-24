@@ -36,6 +36,7 @@ namespace PassGen {
 		private string letters = "abcdefghijklmnopqrstuvwxyz";
 		private string capitals = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 		private string numerals = "0123456789";
+		private string safe_numerals = "23456789";
 		private string whitespace = " ";
 		private ResourceSet specialCharResources = SpecialCharacters.ResourceManager.GetResourceSet(CultureInfo.CurrentCulture, true, true);
 
@@ -115,7 +116,7 @@ namespace PassGen {
 		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length) {
 
-			return GetRandomPassword(length, false, false, false, String.Empty);
+			return GetRandomPassword(length, false, false, false, false, String.Empty);
 		}
 
 		/// <summary>
@@ -126,7 +127,7 @@ namespace PassGen {
 		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length, bool uppercase) {
 
-			return GetRandomPassword(length, uppercase, false, false, String.Empty);
+			return GetRandomPassword(length, uppercase, false, false, false, String.Empty);
 		}
 
 		/// <summary>
@@ -138,7 +139,7 @@ namespace PassGen {
 		/// <returns>Random password compliant with specified constraints.</returns>
 		private string GetRandomPassword(int length, bool uppercase, bool numbers) {
 
-			return GetRandomPassword(length, uppercase, numbers, false, String.Empty);
+			return GetRandomPassword(length, uppercase, numbers, false, false, String.Empty);
 		}
 
 		/// <summary>
@@ -149,9 +150,24 @@ namespace PassGen {
 		/// <param name="numbers"Allow numerals in password.></param>
 		/// <param name="spaces">Allow spaces in password.</param>
 		/// <returns>Random password compliant with specified constraints.</returns>
-		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool spaces) {
+		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool eight_digit) {
 
-			return GetRandomPassword(length, uppercase, numbers, spaces, String.Empty);
+			return GetRandomPassword(length, uppercase, numbers, eight_digit, false, String.Empty);
+		}
+
+		
+		/// <summary>
+		/// Generate a random password.
+		/// </summary>
+		/// <param name="length">Length of password to generate.</param>
+		/// <param name="uppercase">Allow uppercase characters in password.</param>
+		/// <param name="numbers"Allow numerals in password.></param>
+		/// <param name="spaces">Allow spaces in password.</param>
+		/// <param name="specials">String containing special characterrs to allow in password.</param>
+		/// <returns>Random password compliant with specified constraints.</returns>
+		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool eight_digit, bool spaces) {
+
+			return GetRandomPassword(length, uppercase, numbers, eight_digit, spaces, String.Empty);
 		}
 
 		/// <summary>
@@ -163,7 +179,7 @@ namespace PassGen {
 		/// <param name="spaces">Allow spaces in password.</param>
 		/// <param name="specials">String containing special characterrs to allow in password.</param>
 		/// <returns>Random password compliant with specified constraints.</returns>
-		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool spaces, string specials) {
+		private string GetRandomPassword(int length, bool uppercase, bool numbers, bool eight_digit, bool spaces, string specials) {
 
 			string password = String.Empty;
 			char character;
@@ -174,8 +190,12 @@ namespace PassGen {
 			if (uppercase)
 				validChars += capitals;
 
-			if (numbers)
-				validChars += numerals;
+			if (numbers) {
+				if (eight_digit)
+					validChars += safe_numerals;
+				else
+					validChars += numerals;
+			}
 
 			if (spaces)
 				validChars += whitespace;
@@ -207,7 +227,7 @@ namespace PassGen {
 
 			string specialCharString = GetSpecialCharString();
 
-			txtPassword.Text = GetRandomPassword(passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkSpaces.Checked, specialCharString);
+			txtPassword.Text = GetRandomPassword(passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkNumbers.CheckState == CheckState.Indeterminate, chkSpaces.Checked, specialCharString);
 		}
 
 		/// <summary>
@@ -260,7 +280,8 @@ namespace PassGen {
 				txtPassword.Text = txtPassword.Text.Remove(trkLength.Value);
 			else if (passwordLength < trkLength.Value) {
 				string specialCharString = GetSpecialCharString();
-				string passwordChars = GetRandomPassword(trkLength.Value - passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkSpaces.Checked, specialCharString);
+				string passwordChars = GetRandomPassword(passwordLength, chkUppercase.Checked, chkNumbers.Checked, chkNumbers.CheckState == CheckState.Indeterminate, chkSpaces.Checked, specialCharString);
+
 
 				txtPassword.Text += passwordChars;
 			}
@@ -321,7 +342,14 @@ namespace PassGen {
 			Generate();
 		}
 
-		private void chkNumbers_CheckedChanged(object sender, EventArgs e) {
+		private void chkNumbers_CheckStateChanged(object sender, EventArgs e) {
+
+			chkNumbers.Text = chkNumbers.Tag.ToString();
+
+			if (chkNumbers.CheckState == CheckState.Checked)
+				chkNumbers.Text += "0-9";
+			else if (chkNumbers.CheckState == CheckState.Indeterminate)
+				chkNumbers.Text += "2-9";
 
 			Generate();
 		}

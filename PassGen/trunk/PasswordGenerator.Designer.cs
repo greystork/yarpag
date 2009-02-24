@@ -75,15 +75,17 @@ namespace PassGen {
 			// 
 			this.chkNumbers.AutoSize = true;
 			this.chkNumbers.Checked = true;
-			this.chkNumbers.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.chkNumbers.CheckState = System.Windows.Forms.CheckState.Indeterminate;
 			this.chkNumbers.Location = new System.Drawing.Point(12, 22);
 			this.chkNumbers.Name = "chkNumbers";
-			this.chkNumbers.Size = new System.Drawing.Size(68, 17);
+			this.chkNumbers.Size = new System.Drawing.Size(86, 17);
 			this.chkNumbers.TabIndex = 1;
-			this.chkNumbers.Text = "Numbers";
-			this.tipPasswordgenerator.SetToolTip(this.chkNumbers, "Allow passwords to contain numerals.");
+			this.chkNumbers.Tag = "Numbers ";
+			this.chkNumbers.Text = "Numbers 2-9";
+			this.chkNumbers.ThreeState = true;
+			this.tipPasswordgenerator.SetToolTip(this.chkNumbers, "Allow passwords to contain numerals, including or excluding zero and one.");
 			this.chkNumbers.UseVisualStyleBackColor = true;
-			this.chkNumbers.CheckedChanged += new System.EventHandler(this.chkNumbers_CheckedChanged);
+			this.chkNumbers.CheckStateChanged += new System.EventHandler(this.chkNumbers_CheckStateChanged);
 			// 
 			// txtPassword
 			// 
@@ -199,7 +201,7 @@ namespace PassGen {
 			// 
 			this.lblStatus.AutoToolTip = true;
 			this.lblStatus.Name = "lblStatus";
-			this.lblStatus.Size = new System.Drawing.Size(231, 18);
+			this.lblStatus.Size = new System.Drawing.Size(262, 18);
 			this.lblStatus.Spring = true;
 			this.lblStatus.Tag = "Clipboard: ";
 			this.lblStatus.Text = "Clipboard: ";
@@ -224,6 +226,7 @@ namespace PassGen {
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnGenerate;
 			this.ClientSize = new System.Drawing.Size(386, 131);
+			this.Controls.Add(this.chkNumbers);
 			this.Controls.Add(this.chkSpaces);
 			this.Controls.Add(this.statusStrip1);
 			this.Controls.Add(this.txtPassword);
@@ -233,7 +236,6 @@ namespace PassGen {
 			this.Controls.Add(this.cboSpecific);
 			this.Controls.Add(this.chkSpecific);
 			this.Controls.Add(this.trkLength);
-			this.Controls.Add(this.chkNumbers);
 			this.Controls.Add(this.chkSpecialChars);
 			this.Controls.Add(this.chkUppercase);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
