@@ -133,7 +133,6 @@ namespace PassGen {
 			this.cboSpecific.Location = new System.Drawing.Point(100, 77);
 			this.cboSpecific.Name = "cboSpecific";
 			this.cboSpecific.Size = new System.Drawing.Size(187, 21);
-			this.cboSpecific.Sorted = true;
 			this.cboSpecific.TabIndex = 6;
 			this.tipPasswordgenerator.SetToolTip(this.cboSpecific, "Select the special character set to allow.");
 			this.cboSpecific.TextChanged += new System.EventHandler(this.cboSpecific_TextChanged);
@@ -174,16 +173,17 @@ namespace PassGen {
 			this.btnGenerateCopy.UseVisualStyleBackColor = true;
 			this.btnGenerateCopy.Click += new System.EventHandler(this.btnGenerateCopy_Click);
 			// 
-			// statusStrip1
+			// staPasswordGenerator
 			// 
 			this.staPasswordGenerator.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+			this.staPasswordGenerator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblPasswordCharCount,
+            this.lblStatus});
 			this.staPasswordGenerator.Location = new System.Drawing.Point(0, 108);
-			this.staPasswordGenerator.Name = "statusStrip1";
+			this.staPasswordGenerator.Name = "staPasswordGenerator";
 			this.staPasswordGenerator.ShowItemToolTips = true;
 			this.staPasswordGenerator.Size = new System.Drawing.Size(386, 23);
 			this.staPasswordGenerator.TabIndex = 8;
-			this.staPasswordGenerator.Items.Add(lblPasswordCharCount);
-			this.staPasswordGenerator.Items.Add(lblStatus);
 			// 
 			// lblPasswordCharCount
 			// 
@@ -198,7 +198,6 @@ namespace PassGen {
 			// 
 			// lblStatus
 			// 
-			this.lblStatus.AutoToolTip = true;
 			this.lblStatus.Name = "lblStatus";
 			this.lblStatus.Size = new System.Drawing.Size(238, 18);
 			this.lblStatus.Spring = true;

@@ -318,7 +318,8 @@ namespace PassGen {
 			string clipboardLine = clipboardText.Split(new char[] { '\r', '\n' })[0];
 
 			tipPasswordgenerator.SetToolTip(txtPassword, String.Format(settings.txtPasswordTooltipFormat, DoubleToString(Math.Pow(numValidChars, passwordLength))));
-			lblStatus.Text = settings.lblStatusStart + clipboardText;
+			lblStatus.Text = settings.lblStatusStart + clipboardLine;
+			lblStatus.ToolTipText = clipboardText;
 			lblPasswordCharCount.Text = String.Format(settings.lblPasswordCharCountFormat, passwordLength);
 			trkLength.Focus();
 		}
