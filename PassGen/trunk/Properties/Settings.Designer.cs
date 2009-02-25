@@ -29,6 +29,7 @@ namespace PassGen.Properties {
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <string>Universal</string>
   <string>CZ</string>
+  <string>DA</string>
   <string>DE</string>
   <string>HU</string>
   <string>US</string>
@@ -45,6 +46,7 @@ namespace PassGen.Properties {
 <ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
   <string>!?.,:;_-+=*/""'%()</string>
   <string>˚;+ĚěŠšČčŘřŽžÝýÁáÍíÉé%=ˇ´'""/Úú()¨Ůů!§?,:._-*+</string>
+  <string>§½!""@#£¤$%&amp;/{([)]=}?+`´|€åÅ^¨~æÆøØ*'&lt;&gt;\μ;,:._-</string>
   <string>°^!""²§³$%&amp;/{([)]=}?ß\`´@€Üü*+~ÖöÄä'#&lt;&gt;|μ;,:._-</string>
   <string>§'""+!%/=()ÖöÜüÓó\|€Őő÷Úú×[]Éé$ÁáŰűÍí&lt;&gt;#&amp;@{}?,;:._-*</string>
   <string>`~!@#$%^&amp;*()-_=+[{]}\|;:'"",&lt;.&gt;/?</string>
