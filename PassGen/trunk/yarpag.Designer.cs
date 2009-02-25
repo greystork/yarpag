@@ -1,5 +1,5 @@
 namespace PassGen {
-	partial class PasswordGenerator {
+	partial class yarpag {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
@@ -24,7 +24,7 @@ namespace PassGen {
 		/// </summary>
 		private void InitializeComponent() {
 			this.components = new System.ComponentModel.Container();
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PasswordGenerator));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(yarpag));
 			this.chkUppercase = new System.Windows.Forms.CheckBox();
 			this.chkSpecialChars = new System.Windows.Forms.CheckBox();
 			this.chkNumbers = new System.Windows.Forms.CheckBox();
@@ -199,7 +199,7 @@ namespace PassGen {
 			// lblStatus
 			// 
 			this.lblStatus.Name = "lblStatus";
-			this.lblStatus.Size = new System.Drawing.Size(238, 18);
+			this.lblStatus.Size = new System.Drawing.Size(269, 18);
 			this.lblStatus.Spring = true;
 			this.lblStatus.Tag = "";
 			this.lblStatus.Text = "Clipboard: ";
@@ -217,7 +217,7 @@ namespace PassGen {
 			this.chkSpaces.UseVisualStyleBackColor = true;
 			this.chkSpaces.CheckedChanged += new System.EventHandler(this.chkSpaces_CheckedChanged);
 			// 
-			// PasswordGenerator
+			// yarpag
 			// 
 			this.AcceptButton = this.btnGenerateCopy;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -239,8 +239,8 @@ namespace PassGen {
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.MaximumSize = new System.Drawing.Size(1024, 165);
 			this.MinimumSize = new System.Drawing.Size(280, 165);
-			this.Name = "PasswordGenerator";
-			this.Text = "Random Password Generator";
+			this.Name = "yarpag";
+			this.Text = "yarpag v1.1";
 			this.Activated += new System.EventHandler(this.PasswordGenerator_Activated);
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.PasswordGenerator_FormClosing);
 			this.Resize += new System.EventHandler(this.PasswordGenerator_Resize);

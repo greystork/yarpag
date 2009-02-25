@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>PassGen</RootNamespace>
-    <AssemblyName>PassGen</AssemblyName>
+    <AssemblyName>yarpag</AssemblyName>
     <ApplicationIcon>keys.ico</ApplicationIcon>
     <ManifestCertificateThumbprint>0AB55CA1E107C32501BF97CDD73E8F34B3FB4233</ManifestCertificateThumbprint>
     <ManifestKeyFile>PassGen_TemporaryKey.pfx</ManifestKeyFile>
@@ -27,6 +27,11 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <SccProjectName>Svn</SccProjectName>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccProvider>SubversionScc</SccProvider>
+    <StartupObject>PassGen.Program</StartupObject>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -54,17 +59,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PasswordGenerator.cs">
+    <Compile Include="yarpag.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="PasswordGenerator.Designer.cs">
-      <DependentUpon>PasswordGenerator.cs</DependentUpon>
+    <Compile Include="yarpag.Designer.cs">
+      <DependentUpon>yarpag.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="PasswordGenerator.resx">
+    <EmbeddedResource Include="yarpag.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>PasswordGenerator.cs</DependentUpon>
+      <DependentUpon>yarpag.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

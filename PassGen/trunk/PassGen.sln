@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 9.00
 # Visual Studio 2005
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PassGen", "PassGen.csproj", "{21434C27-14F7-40D6-95DA-52AD8B47F9CC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "yarpag", "yarpag.csproj", "{21434C27-14F7-40D6-95DA-52AD8B47F9CC}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "PassGenSetup", "PassGenSetup\PassGenSetup.vdproj", "{8E73C88B-285A-4C93-A7F4-CD63E3668FF1}"
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "yarpagSetup", "PassGenSetup\PassGenSetup.vdproj", "{8E73C88B-285A-4C93-A7F4-CD63E3668FF1}"
 EndProject
 Global
 	GlobalSection(SubversionScc) = preSolution

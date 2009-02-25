@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Random Password Generator")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyTitle("yarpag")]
+[assembly: AssemblyDescription("Yet Another Random PAssword Generator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("GreyStork.com")]
-[assembly: AssemblyProduct("PassGen")]
-[assembly: AssemblyCopyright("(CC) 2009 Creative Commons Non-Commercial")]
+[assembly: AssemblyCompany("")]
+[assembly: AssemblyProduct("yarpag")]
+[assembly: AssemblyCopyright("Gnu GPL v3")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace PassGen {
 
-	public partial class PasswordGenerator : Form {
+	public partial class yarpag : Form {
 
 
 		public const int DefaultPasswordLength = 8;
@@ -43,7 +43,7 @@ namespace PassGen {
 		/// <summary>
 		/// Default Constructor
 		/// </summary>
-		public PasswordGenerator() {
+		public yarpag() {
 
 			settings = Properties.Settings.Default;
 			passwordLength = 8;
@@ -96,7 +96,7 @@ namespace PassGen {
 			int widthChars = (txtPassword.Width - txtPasswordHorizontalMargin) / charPixelWidth;
 			int maxStringWidth = widthChars * charPixelWidth;
 
-			trkLengthMarginWidth = trkLength.Width - maxStringWidth - 3; // Don't know where the minus 3 come from...
+			trkLengthMarginWidth = trkLength.Width - maxStringWidth - 3; // Don't know where the minus 3 came from...
 
 			seed = DateTime.Now.Ticks / seed;
 			Generate();
