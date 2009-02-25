@@ -27,6 +27,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A604023C6CF743469FA76D7541D64336"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_E66B69378F4E4877A2611D5F1B3E09A7"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -167,6 +173,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A604023C6CF743469FA76D7541D64336"
+            {
+            "SourcePath" = "8:..\\license.txt"
+            "TargetName" = "8:license.txt"
+            "Tag" = "8:"
+            "Folder" = "8:_48706AA9C61E4D0EAB34FD00C840AAAB"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -223,7 +249,7 @@
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:yarpag"
         "ProductCode" = "8:{E99162EF-0F3D-4780-BF46-A693B47A1C58}"
-        "PackageCode" = "8:{DD225007-E57F-42BD-A99A-8304477DBC32}"
+        "PackageCode" = "8:{5E1C310D-D7C0-4838-8C6A-C25C79C0CF00}"
         "UpgradeCode" = "8:{FA580E81-B4E3-4A4C-9E5D-C1600AC975B1}"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
@@ -509,7 +535,7 @@
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
                             "Setting" = "3:2"
-                            "Value" = "8:ATTENTION: You are free to Share - to copy and distribute this computer program under the following conditions: You may not use this software for commercial purposes. You may not alter this computer program or any files included with it. You accept personal responsibility for using this computer program with the understanding that no warranty or guarantee of any kind is offered by its creator."
+                            "Value" = "8:ATTENTION: This program is released under the Gnu GPLv3 license. See http://www.gnu.org/licenses/ for details."
                             "DefaultValue" = "8:#1202"
                             "UsePlugInResources" = "11:TRUE"
                             }

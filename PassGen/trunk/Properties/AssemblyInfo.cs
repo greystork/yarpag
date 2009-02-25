@@ -10,7 +10,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("yarpag")]
-[assembly: AssemblyCopyright("Gnu GPL v3")]
+[assembly: AssemblyCopyright("Gnu GPLv3 <http://www.gnu.org/licenses/>")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
