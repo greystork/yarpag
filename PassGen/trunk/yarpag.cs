@@ -53,10 +53,9 @@ namespace PassGen {
 
 			InitializeComponent();
 
-			this.Text = settings.Title;
 			lblPasswordCharCount.ToolTipText = settings.lblPasswordCharCountTooltip;
 			chkUppercase.Text = settings.chkUppercaseText;
-			chkNumbers.Text = settings.chkNumbersStart;
+			chkNumbers.Text = settings.chkNumbersStart + settings.SafeNumeralsName;
 			chkSpaces.Text = settings.chkSpacesText;
 			chkSpecialChars.Text = settings.chkSpecialCharsText;
 			chkSpecific.Text = settings.chkSpecificText;

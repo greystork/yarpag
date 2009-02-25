@@ -390,15 +390,6 @@ namespace PassGen.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Random Password Generator")]
-        public string Title {
-            get {
-                return ((string)(this["Title"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Select the special character set to allow.")]
         public string cboSpecificTooltip {
             get {
