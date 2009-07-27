@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("yarpag")]
 [assembly: AssemblyDescription("Yet Another Random PAssword Generator")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("GreyStork.com")]
 [assembly: AssemblyProduct("yarpag")]
 [assembly: AssemblyCopyright("Gnu GPLv3 <http://www.gnu.org/licenses/>")]
 [assembly: AssemblyTrademark("")]
@@ -29,5 +29,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("1.1.*")]
-[assembly: AssemblyFileVersion("1.1.0")]
+[assembly: AssemblyVersion("1.2.*")]
+[assembly: AssemblyFileVersion("1.2.0")]
