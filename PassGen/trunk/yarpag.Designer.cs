@@ -1,4 +1,21 @@
 namespace PassGen {
+	/// <summary>
+	/// Yet Another Random PAssword Generator.
+	/// Copyright (C) 2009  GreyStork.com
+	/// 
+	/// This program is free software: you can redistribute it and/or modify
+	/// it under the terms of the GNU General Public License as published by
+	/// the Free Software Foundation, either version 3 of the License, or
+	/// (at your option) any later version.
+	/// 
+	/// This program is distributed in the hope that it will be useful,
+	/// but WITHOUT ANY WARRANTY; without even the implied warranty of
+	/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	/// GNU General Public License for more details.
+	/// 
+	/// You should have received a copy of the GNU General Public License
+	/// along with this program.  If not, see http://www.gnu.org/licenses/.
+	/// </summary>
 	partial class yarpag {
 		/// <summary>
 		/// Required designer variable.
@@ -53,7 +70,7 @@ namespace PassGen {
 			this.staPasswordGenerator.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblPasswordCharCount,
             this.lblStatus});
-			this.staPasswordGenerator.Location = new System.Drawing.Point(0, 108);
+			this.staPasswordGenerator.Location = new System.Drawing.Point(0, 106);
 			this.staPasswordGenerator.Name = "staPasswordGenerator";
 			this.staPasswordGenerator.RenderMode = System.Windows.Forms.ToolStripRenderMode.ManagerRenderMode;
 			this.staPasswordGenerator.ShowItemToolTips = true;
@@ -105,6 +122,7 @@ namespace PassGen {
 			this.cboSpecific.TabIndex = 5;
 			this.cboSpecific.Text = global::PassGen.Properties.Settings.Default.cboSpecificText;
 			this.tipPasswordGenerator.SetToolTip(this.cboSpecific, "Select the special character set to allow.");
+			this.cboSpecific.EnabledChanged += new System.EventHandler(this.cboSpecific_EnabledChanged);
 			this.cboSpecific.Leave += new System.EventHandler(this.cboSpecific_Leave);
 			this.cboSpecific.SelectedValueChanged += new System.EventHandler(this.cboSpecific_SelectedValueChanged);
 			this.cboSpecific.TextChanged += new System.EventHandler(this.cboSpecific_TextChanged);
@@ -253,7 +271,7 @@ namespace PassGen {
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
 			this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
 			this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(228)))), ((int)(((byte)(221)))));
-			this.ClientSize = new System.Drawing.Size(372, 131);
+			this.ClientSize = new System.Drawing.Size(372, 129);
 			this.Controls.Add(this.cboSpecific);
 			this.Controls.Add(this.chkSpecific);
 			this.Controls.Add(this.chkSpecialChars);
@@ -267,6 +285,7 @@ namespace PassGen {
 			this.Controls.Add(this.btnCopy);
 			this.Controls.Add(this.btnGenerate);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.KeyPreview = true;
 			this.Location = global::PassGen.Properties.Settings.Default.Location;
 			this.MaximumSize = new System.Drawing.Size(1024, 165);
 			this.MinimumSize = new System.Drawing.Size(280, 165);

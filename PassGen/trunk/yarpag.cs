@@ -1,23 +1,28 @@
 using System;
 using System.Reflection;
-using System.Collections;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Configuration;
-using System.Globalization;
-using System.Resources;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 using System.Diagnostics;
 using Microsoft.Win32;
 
 namespace PassGen {
-
-
 	/// <summary>
 	/// Yet Another Random PAssword Generator.
+	/// Copyright (C) 2009  Torben K. Jensen
+	/// 
+	/// This program is free software: you can redistribute it and/or modify
+	/// it under the terms of the GNU General Public License as published by
+	/// the Free Software Foundation, either version 3 of the License, or
+	/// (at your option) any later version.
+	/// 
+	/// This program is distributed in the hope that it will be useful,
+	/// but WITHOUT ANY WARRANTY; without even the implied warranty of
+	/// MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	/// GNU General Public License for more details.
+	/// 
+	/// You should have received a copy of the GNU General Public License
+	/// along with this program.  If not, see http://www.gnu.org/licenses/.
 	/// </summary>
 	public partial class yarpag : Form {
 
@@ -76,7 +81,7 @@ namespace PassGen {
 			settings = Properties.Settings.Default;
 			passwordLength = settings.PasswordLength;
 			moveCount = 1;
-
+			
 			InitializeComponent();
 			// Write-enable form bounds settings during resizing.
 			writeBoundsSettings = true;
@@ -92,10 +97,12 @@ namespace PassGen {
 			this.Size = settings.Size;
 
 			// Set title.
-			this.Text = Application.ProductName + " v" + version.Major.ToString() + "." + version.Minor.ToString();
+			this.Text = String.Format("{0} v{1}.{2}", Application.ProductName, version.Major, version.Minor);
 			// Add special character set names to combobox.
 			for (int specIndex = 0; specIndex < settings.Keyboards.Count; ++specIndex)
 				cboSpecific.Items.Add(settings.Keyboards[specIndex]);
+			// Select the default special character set.
+			cboSpecific.SelectedIndex = 0;
 		}
 
 		#endregion .Constructors
@@ -123,6 +130,17 @@ namespace PassGen {
 			UpdateStatusText(); // Refresh clipboard display.
 
 			base.OnActivated(e);
+		}
+
+		/// <summary>
+		/// Update status text if any selected text is copied to clipboard.
+		/// </summary>
+		protected override void OnKeyUp(KeyEventArgs e) {
+			
+			base.OnKeyUp(e);
+
+			if (e.Modifiers == Keys.Control && (e.KeyCode == Keys.C || e.KeyCode == Keys.X || e.KeyCode == Keys.Insert))
+				UpdateStatusText();
 		}
 
 		/// <summary>
@@ -202,10 +220,10 @@ namespace PassGen {
 
 		#region Event Handlers
 
-		#region System EVents
+		#region System Events
 
 		// Handle display setting changes.
-		void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e) {
+		private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs e) {
 
 			this.MaximumSize = new Size(SystemInformation.PrimaryMonitorMaximizedWindowSize.Width, this.MaximumSize.Height);
 		}
@@ -252,33 +270,45 @@ namespace PassGen {
 		private void chkSpecific_CheckStateChanged(object sender, EventArgs e) {
 
 			cboSpecific.Enabled = chkSpecialChars.Checked && chkSpecific.Checked;
-			Generate();
+			if (cboSpecific.SelectedIndex > 0)
+				Generate();
+		}
+
+		// When cboSpecific is enabled or disabled, revert to default combobox selection.
+		private void cboSpecific_EnabledChanged(object sender, EventArgs e) {
+
+			cboSpecific.SelectedItem = settings.Keyboards[0];
 		}
 
 		// Password settings have changed; generate new password.
 		private void cboSpecific_TextChanged(object sender, EventArgs e) {
 
-			if (!cboSpecific.Focused)
-				Generate();
+			// Select any matching keyboard definition.
+			if (settings.Keyboards.Contains(cboSpecific.Text))
+				cboSpecific.SelectedItem = cboSpecific.Text;
+
+			Generate();
 		}
 
-		// Upon user edit, reset 'Specific' special character set combobox selection to default if text is an empty string.
-		// Assume that settings have changed; generate new password.
+		// Upon user edit, if text is an empty string, reset 'Specific'
+		// special character set combobox selection to default;
+		// otherwise, set to any mathcing keyboard definition.
 		private void cboSpecific_Leave(object sender, EventArgs e) {
 
 			if (cboSpecific.Text == String.Empty)
 				cboSpecific.SelectedItem = settings.Keyboards[0];
-
-			Generate();
+			else
+				cboSpecific.SelectedItem = cboSpecific.Text;
 		}
 
 		// When selecting am item in the drop-down list, fire the focus 'Leave' event.
 		private void cboSpecific_SelectedValueChanged(object sender, EventArgs e) {
 
-			txtPassword.Focus();
+			if (cboSpecific.Enabled)
+				Generate();
 		}
 
-		/// Adjust password length based on the position of trackbar slider.
+		// Adjust password length based on the position of trackbar slider.
 		private void trkLength_Scroll(object sender, EventArgs e) {
 
 			AdjustPasswordLength();
@@ -290,26 +320,27 @@ namespace PassGen {
 			Generate();
 		}
 
-		/// Copy text from password text control to clipboard.
+		// Copy text from password text control to clipboard.
 		private void btnCopy_Click(object sender, EventArgs e) {
 
 			Copy();
 		}
 
-		/// Generate new password and copy text from password text control to clipboard.
+		// Generate new password and copy text from password text control to clipboard.
 		private void btnGenerateCopy_Click(object sender, EventArgs e) {
 
+			trkLength.Focus();
 			Generate();
 			Copy();
 		}
 
-		/// Update trackbar properties based on password text control metrics.
+		// Update trackbar properties based on password text control metrics.
 		private void txtPassword_FontChanged(object sender, EventArgs e) {
 
 			UpdateTrackBar();
 		}
 
-		/// Update trackbar properties based on password text control metrics.
+		// Update trackbar properties based on password text control metrics.
 		private void txtPassword_SizeChanged(object sender, EventArgs e) {
 
 			UpdateTrackBar();
@@ -342,7 +373,6 @@ namespace PassGen {
 				trkLength.Maximum = maxChars;
 
 				this.ResumeLayout();
-				trkLength.Focus();
 			}
 		}
 
@@ -467,7 +497,7 @@ namespace PassGen {
 		/// </summary>
 		private void UpdateStatusText() {
 
-			string clipboardText = Clipboard.GetText().Trim();
+			String clipboardText = Clipboard.GetText().Trim();
 
 			if (clipboardText != String.Empty) { // Add first line of clipboard text to status bar text.
 				string clipboardLine = clipboardText.Split(new char[] { '\r', '\n' })[0];
@@ -482,7 +512,7 @@ namespace PassGen {
 			lblPasswordCharCount.Text = String.Format(settings.lblPasswordCharCountFormat, passwordLength);
 			// Password text field tooltip:
 			tipPasswordGenerator.SetToolTip(txtPassword, String.Format(settings.txtPasswordTooltipFormat, DoubleToString(Math.Pow(numValidChars, passwordLength))));
-			trkLength.Focus();
+			//trkLength.Focus();
 		}
 
 		/// <summary>
@@ -542,14 +572,18 @@ namespace PassGen {
 			string specialCharString = String.Empty;
 
 			if (chkSpecialChars.Checked) {
-				if (chkSpecific.Enabled && chkSpecific.Checked && cboSpecific.SelectedIndex >= 0)
-					specialCharString = settings.KeyboardSpecialCharacters[cboSpecific.SelectedIndex];
-				else if (cboSpecific.Text == String.Empty) {
-					specialCharString = settings.KeyboardSpecialCharacters[0];
-					cboSpecific.SelectedItem = settings.Keyboards[0];
+				if (chkSpecific.Enabled && chkSpecific.Checked) {
+					if (cboSpecific.SelectedIndex >= 0)
+						specialCharString = settings.KeyboardSpecialCharacters[cboSpecific.SelectedIndex];
+					else {
+						foreach (char specialChar in cboSpecific.Text) {
+
+						}
+						specialCharString = cboSpecific.Text;
+					}
 				}
 				else
-					specialCharString = cboSpecific.Text;
+					specialCharString = settings.KeyboardSpecialCharacters[0];
 			}
 			return specialCharString;
 		}
