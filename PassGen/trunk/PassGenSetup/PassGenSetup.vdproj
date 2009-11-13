@@ -371,7 +371,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_2955C573D38E497089646FCFCBB0D0F7"
             {
-            "Name" = "8:Random Passwrod Generator"
+            "Name" = "8:Random Password Generator"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
