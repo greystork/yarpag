@@ -103,6 +103,8 @@ namespace PassGen {
 				cboSpecific.Items.Add(settings.Keyboards[specIndex]);
 			// Select the default special character set.
 			cboSpecific.SelectedIndex = 0;
+			// Position trackbar slider.
+			trkLength.Value = passwordLength;
 		}
 
 		#endregion .Constructors
@@ -577,7 +579,7 @@ namespace PassGen {
 						specialCharString = settings.KeyboardSpecialCharacters[cboSpecific.SelectedIndex];
 					else {
 						foreach (char specialChar in cboSpecific.Text) {
-
+							// Check user-defined special chars?
 						}
 						specialCharString = cboSpecific.Text;
 					}
